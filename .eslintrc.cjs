@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'airbnb',
@@ -9,18 +9,18 @@ module.exports = {
     'airbnb/hooks',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json'
+    project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
     'react/react-in-jsx-scope': 0,
-    'import/extensions': ['ignorePackages'],
-    'comma-dangle': 'off'
-  }
+    'import/extensions': ['error', 'ignorePackages'],
+    '@typescript-eslint/comma-dangle': 'off',
+  },
 };

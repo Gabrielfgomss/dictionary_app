@@ -13,7 +13,7 @@ function App() {
   }, [theme]);
 
   return (
-    <button className="btn" onClick={toggleTheme}>
+    <button className="btn" type="button" onClick={toggleTheme}>
       <p>Hello World!</p>
     </button>
   );
