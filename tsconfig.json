@@ -25,6 +25,8 @@
   "include": [
     "src",
     ".eslintrc.cjs",
+    "postcss.config.cjs",
+    "tailwind.config.js"
   ],
   "references": [
     {
