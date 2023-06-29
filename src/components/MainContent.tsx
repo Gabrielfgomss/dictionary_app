@@ -2,7 +2,6 @@ import { TogglePlay } from './AnimateComponents.tsx';
 import ContentWord from './ContentWord.tsx';
 
 function MainContent({ word, phonetics, meanings }) {
-  console.log(meanings);
   return (
     <>
       <div className="flex justify-between">
@@ -37,36 +36,12 @@ function MainContent({ word, phonetics, meanings }) {
 
             {index === (array.length - 1) && item.definitions.map(
               (item) => (
-                <p key={item.definition} className="text-zinc-400 font-light text-base start-3 w-fit ml-10">
-                  "
-                  {item.definition}
-                  "
-                </p>
+                <p key={item.definition} className="text-zinc-400 font-light text-base start-3 w-fit ml-10">"{item.definition}"</p>
               )
             )}
-            {/* {synonymous && (
-                synonymous.map((item, index) => (
-                  <>
-                    <p className="text-zinc-400 font-light text-lg w-fit">Synonyms</p>
-                    <p className="text-purple-600 font-bold lowercase w-fit">{item}</p>
-                    {meanings.example && (
-                    <p className="text-zinc-400 font-light text-lg start-3 w-fit col-span-3">
-                      "
-                      {meanings.example}
-                      "
-                    </p>
-                    )}
-                  </>
-                ))
-              )} */}
           </ContentWord>
         </>
       ))}
-      {/* <div className="flex items-center gap-6">
-        <h2 className="font-bold">verb</h2>
-        <span className="w-full border-t-2 border-zinc-200" />
-      </div>
-      <ContentWord meanings={[{ text: 'say or shout ‘hello’.' }]} synonymous={{ text: 'work', example: 'I pressed the phone button and helloed' }} /> */}
     </>
   );
 }

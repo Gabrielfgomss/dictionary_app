@@ -1,6 +1,3 @@
-import { TogglePlay } from './AnimateComponents.tsx';
-import ContentWord from './ContentWord.tsx';
-
 function SkeletonComponent() {
   return (
     <>
