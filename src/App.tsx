@@ -1,4 +1,3 @@
-import './App.css';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Logo from './assets/dictionary.png';
@@ -6,8 +5,7 @@ import IconsNavBar from './components/IconsNavBar.tsx';
 import SkeletonComponent from './components/SkeletonComponent.tsx';
 import MainContent from './components/MainContent.tsx';
 import getWord from './api/apiCall.ts';
-import { changeState } from './features/theme/themeSlice.ts';
-import { changeInputState } from './features/inputText/inputTextSlice.ts';
+import { changeInputState } from './features/inputTextContext/inputTextSlice.ts';
 
 function App() {
   // Control the theme
@@ -15,7 +13,7 @@ function App() {
   // Control the inputValue
   const { inputValue } = useSelector((state) => state.inputText);
   // Control the font-family
-  const [font, setFont] = useState('serif');
+  const { font } = useSelector((state) => state.fontFamily);
   // Control the data
   const [load, setLoad] = useState(true);
   const [data, setData] = useState({
@@ -25,15 +23,6 @@ function App() {
   });
 
   const dispatch = useDispatch();
-
-  const toggleTheme = () => {
-    dispatch(changeState());
-  };
-
-  const toggleFont = () => {
-    setFont('nano');
-  };
-
   const getCall = async (e) => {
     e.preventDefault();
     try {
@@ -60,38 +49,36 @@ function App() {
   }, [value]);
 
   return (
-    <div className="container mx-auto my-4">
-      <div
-        className={`flex flex-col gap-10 p-6 font-${font} text-black dark:text-white`}
-      >
-        <div className="flex justify-between items-center">
-          <img src={Logo} alt="Logo" className={`lg:w-24 ${invert} md:w-16 sm:w-16 w-16`} />
-          <IconsNavBar
-            toggleTheme={toggleTheme}
-            toggleFont={toggleFont}
-            isChecked={isChecked}
-          />
-        </div>
-        <form onSubmit={(e) => getCall(e)}>
-          <input
-            id="inputText"
-            onChange={(e) => dispatch(changeInputState(e.target.value))}
-            value={inputValue}
-            type="text"
-            placeholder="Type here"
-            className="w-full bg-zinc-100 focus:text-black focus:font-semibold border-none rounded-full p-4 placeholder:text-black placeholder:font-semibold text-black font-semibold"
-          />
-        </form>
-        {load === false
-          ? <SkeletonComponent />
-          : (
-            <>
-              <MainContent word={data.word} phonetics={data.phonetics} meanings={data.meanings} />
-              <div className="w-full border-t-2 border-zinc-200 mb-5" />
-            </>
-          )}
-      </div>
+
+    <div
+      className={`flex flex-col gap-10 p-6 text-black dark:text-white container mx-auto font-${font}`}
+    >
+      <nav className="flex justify-between items-center">
+        <img src={Logo} alt="Logo" className={`lg:w-24 ${invert} md:w-16 sm:w-16 w-16`} />
+        <IconsNavBar
+          isChecked={isChecked}
+        />
+      </nav>
+      <form onSubmit={(e) => getCall(e)}>
+        <input
+          id="inputText"
+          onChange={(e) => dispatch(changeInputState(e.target.value))}
+          value={inputValue}
+          type="text"
+          placeholder="Type here"
+          className="w-full bg-zinc-100 focus:text-black focus:font-semibold border-none rounded-full p-4 placeholder:text-black placeholder:font-semibold text-black font-semibold"
+        />
+      </form>
+      {load === false
+        ? <SkeletonComponent />
+        : (
+          <>
+            <MainContent word={data.word} phonetics={data.phonetics} meanings={data.meanings} />
+            <div className="w-full border-t-2 border-zinc-200 mb-5" />
+          </>
+        )}
     </div>
+
   );
 }
 

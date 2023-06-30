@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import themeSlice from './features/theme/themeSlice.ts';
-import inputTextSlice from './features/inputText/inputTextSlice.ts';
+import themeSlice from './features/themeContext/themeSlice.ts';
+import inputTextSlice from './features/inputTextContext/inputTextSlice.ts';
+import fontFamiliSlice from './features/fontFamilyContext/fontFamiliSlice.ts';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     theme: themeSlice,
-    inputText: inputTextSlice
+    inputText: inputTextSlice,
+    fontFamily: fontFamiliSlice
   }
 });
+
+export default store;

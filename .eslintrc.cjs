@@ -25,5 +25,6 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'import/extensions': ['error', 'ignorePackages'],
     '@typescript-eslint/comma-dangle': 'off',
+    'react/no-array-index-key': 'off'
   },
 };
