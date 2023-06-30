@@ -13,13 +13,16 @@ const wordSlice = createSlice({
   initialState,
   reducers: {
     changeMeanings: (state, action) => {
-      console.log(action.payload);
-      if (typeof action.payload === 'string') return { error: action.payload };
-      state.word = action.payload.word;
-      state.phonetics = action.payload.phonetics;
-      state.audio = action.payload.audio;
-      state.meanings = action.payload.meanings;
-      state.error = '';
+      console.log(typeof action.payload === 'string');
+      if (typeof action.payload === 'string') {
+        state.error = action.payload;
+      } else {
+        state.word = action.payload.word;
+        state.phonetics = action.payload.phonetics;
+        state.audio = action.payload.audio;
+        state.meanings = action.payload.meanings;
+        state.error = '';
+      }
     },
   },
 });

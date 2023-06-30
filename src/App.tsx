@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Logo from './assets/dictionary.png';
 import IconsNavBar from './components/IconsNavBar.tsx';
@@ -6,21 +6,22 @@ import SkeletonComponent from './components/SkeletonComponent.tsx';
 import MainContent from './components/MainContent.tsx';
 import { changeInputState } from './features/inputTextContext/inputTextSlice.ts';
 import useFetch from './api/useFetch.ts';
+import { RootState } from './store.ts';
 
 function App() {
   const dispatch = useDispatch();
   const { fetchData } = useFetch();
   // Control the theme
-  const { invert, isChecked, value } = useSelector((state) => state.theme);
+  const { invert, isChecked, value } = useSelector((state: RootState) => state.theme);
   // Control the inputValue
-  const { inputValue } = useSelector((state) => state.inputText);
+  const { inputValue } = useSelector((state: RootState) => state.inputText);
   // Control the font-family
-  const { font } = useSelector((state) => state.fontFamily);
+  const { font } = useSelector((state: RootState) => state.fontFamily);
   // Control render
   const [load, setLoad] = useState(false);
   const [isRequestMade, setRequestMade] = useState(false);
 
-  const getCall = async (e) => {
+  const getCall = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoad(true);
     setRequestMade(true);

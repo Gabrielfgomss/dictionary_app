@@ -2,13 +2,21 @@ import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { TogglePlay } from './AnimateComponents.tsx';
 import ContentWord from './ContentWord.tsx';
+import { RootState } from '../store.ts';
+
+interface ItemProps {
+  partOfSpeech: string,
+  word: string,
+  definitions: [],
+  synonyms: []
+}
 
 function MainContent() {
   const {
     word, phonetics, meanings, audio, error
-  } = useSelector((state) => state.word);
-  console.log(phonetics);
-  if (error !== '') return <p className='text-2xl text-zinc-500 text-center font-semibold'>{error}</p>;
+  } = useSelector((state: RootState) => state.word);
+  console.log(error);
+  if (error !== '') return <p className="text-2xl text-zinc-500 text-center font-semibold">{error}</p>;
 
   return (
     <>
@@ -19,7 +27,7 @@ function MainContent() {
         </div>
         {audio !== undefined && <TogglePlay audio={audio} />}
       </div>
-      {meanings.map((item, index, array) => (
+      {meanings.map((item: ItemProps, index) => (
         <Fragment key={index}>
           <div key={item.partOfSpeech} className="flex items-center gap-6">
             <h2 className="font-bold">{item.partOfSpeech}</h2>
@@ -28,7 +36,6 @@ function MainContent() {
           <ContentWord
             key={item.word}
             meanings={item.definitions}
-            number={index}
           >
             {item.synonyms.length > 0
               ? (
@@ -38,13 +45,13 @@ function MainContent() {
                 </div>
               ) : ''}
             {item.definitions.filter(
-              (item) => {
+              (item: { example: string }) => {
                 if (item.example !== undefined) {
                   return item;
                 }
                 return '';
               }
-            ).map((item) => <p key={item.example} className="text-zinc-400 font-light text-base start-3 w-fit ml-10">{`"${item.example}"`}</p>)}
+            ).map((item: { example: string }) => <p key={item.example} className="text-zinc-400 font-light text-base start-3 w-fit ml-10">{`"${item.example}"`}</p>)}
           </ContentWord>
         </Fragment>
       ))}

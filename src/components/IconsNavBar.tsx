@@ -3,7 +3,7 @@ import Dropdown from './Dropdown.tsx';
 import { ToggleButton } from './AnimateComponents.tsx';
 import { changeState } from '../features/themeContext/themeSlice.ts';
 
-function IconsNavBar({ isChecked }) {
+function IconsNavBar({ isChecked }: { isChecked: boolean }) {
   const dispatch = useDispatch();
   return (
     <div className="flex gap-4 items-center">

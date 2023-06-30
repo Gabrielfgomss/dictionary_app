@@ -1,7 +1,11 @@
 import { XyzTransition } from '@animxyz/react';
-import { useRef } from 'react';
+import { SVGProps, useRef } from 'react';
 
-export function ToggleButton({ click }) {
+interface MySVGProps extends SVGProps<SVGSVGElement> {
+  xyz: 'string'
+}
+
+export function ToggleButton({ click }: { click: boolean }) {
   return (
     <XyzTransition appear mode="out-in">
       {!click
@@ -35,10 +39,10 @@ export function ToggleButton({ click }) {
   );
 }
 
-export function TogglePlay({ audio }) {
+export function TogglePlay({ audio }: { audio: string }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const handleAduio = async () => {
-    audioRef.current.play();
+    if (audioRef.current !== null) audioRef.current.play();
   };
   return (
     <>

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFontFamily } from '../features/fontFamilyContext/fontFamiliSlice.ts';
+import { RootState } from '../store.ts';
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const { font } = useSelector((state) => state.fontFamily);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const { font } = useSelector((state: RootState) => state.fontFamily);
   const dispatch = useDispatch();
 
   const toggleDropdown = () => {
@@ -16,13 +17,14 @@ function Dropdown() {
     setIsOpen(false);
   };
 
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      closeDropdown();
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current
+        && dropdownRef.current instanceof HTMLElement
+        && !dropdownRef.current.contains(event.target as Node)) {
+        closeDropdown();
+      }
+    };
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -67,7 +69,10 @@ function Dropdown() {
               type="button"
               onClick={(event) => {
                 closeDropdown();
-                dispatch(changeFontFamily(event.target.textContent.toLowerCase()));
+                const target = event.target as HTMLElement;
+                if (target.textContent) {
+                  dispatch(changeFontFamily(target.textContent.toLowerCase()));
+                }
               }}
               className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
@@ -79,7 +84,10 @@ function Dropdown() {
               type="button"
               onClick={(event) => {
                 closeDropdown();
-                dispatch(changeFontFamily(event.target.textContent.toLowerCase()));
+                const target = event.target as HTMLElement;
+                if (target.textContent) {
+                  dispatch(changeFontFamily(target.textContent.toLowerCase()));
+                }
               }}
               className="font-merriWeather block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
@@ -91,7 +99,10 @@ function Dropdown() {
               type="button"
               onClick={(event) => {
                 closeDropdown();
-                dispatch(changeFontFamily(event.target.textContent.toLowerCase()));
+                const target = event.target as HTMLElement;
+                if (target.textContent) {
+                  dispatch(changeFontFamily(target.textContent.toLowerCase()));
+                }
               }}
               className="font-lato block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
