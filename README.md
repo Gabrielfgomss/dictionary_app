@@ -6,7 +6,7 @@ O Dicionário Virtual é um aplicativo web que permite aos usuários pesquisar p
 | -------------  | --- |
 | :sparkles: Nome        | Dictonary
 | :label: Tecnologias | React, JavaScript, Redux Toolkit e Tailwind CSS.
-| :rocket: URL         | [https://url-deploy.com.br](https://organo-d57wwwmtk-gabrielfgomss.vercel.app)
+| :rocket: URL         | [https://url-deploy.com.br](https://dictionary-app-umber.vercel.app)
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](dictionary.png#vitrinedev)
