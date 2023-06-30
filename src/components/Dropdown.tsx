@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeFontFamily } from '../features/fontFamilyContext/fontFamiliSlice.ts';
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { font } = useSelector((state) => state.fontFamily);
   const dispatch = useDispatch();
 
   const toggleDropdown = () => {
@@ -31,11 +32,11 @@ function Dropdown() {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="text-black font-semibold text-lg px-4 py-2.5 text-center inline-flex items-center dark:text-white"
+        className="text-black w-min-[122px] font-semibold text-xs px-2 sm:text-lg sm:px-4 py-2.5 text-center inline-flex items-center dark:text-white capitalize"
         type="button"
         onClick={toggleDropdown}
       >
-        Serif
+        {font}
         {' '}
         <svg
           className="w-4 h-4 ml-2"

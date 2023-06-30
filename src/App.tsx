@@ -4,39 +4,31 @@ import Logo from './assets/dictionary.png';
 import IconsNavBar from './components/IconsNavBar.tsx';
 import SkeletonComponent from './components/SkeletonComponent.tsx';
 import MainContent from './components/MainContent.tsx';
-import getWord from './api/apiCall.ts';
 import { changeInputState } from './features/inputTextContext/inputTextSlice.ts';
+import useFetch from './api/useFetch.ts';
 
 function App() {
+  const dispatch = useDispatch();
+  const { fetchData } = useFetch();
   // Control the theme
   const { invert, isChecked, value } = useSelector((state) => state.theme);
   // Control the inputValue
   const { inputValue } = useSelector((state) => state.inputText);
   // Control the font-family
   const { font } = useSelector((state) => state.fontFamily);
-  // Control the data
-  const [load, setLoad] = useState(true);
-  const [data, setData] = useState({
-    word: '',
-    phonetics: [],
-    meanings: []
-  });
+  // Control render
+  const [load, setLoad] = useState(false);
+  const [isRequestMade, setRequestMade] = useState(false);
 
-  const dispatch = useDispatch();
   const getCall = async (e) => {
     e.preventDefault();
+    setLoad(true);
+    setRequestMade(true);
     try {
-      const response = await getWord(inputValue);
-      const { word, phonetics, meanings } = response;
-      setData(() => ({
-        word,
-        phonetics: phonetics[0],
-        meanings
-      }));
-      setLoad(false);
+      await fetchData(inputValue);
       dispatch(changeInputState(''));
     } finally {
-      setLoad(true);
+      setLoad(false);
     }
   };
 
@@ -49,9 +41,8 @@ function App() {
   }, [value]);
 
   return (
-
     <div
-      className={`flex flex-col gap-10 p-6 text-black dark:text-white container mx-auto font-${font}`}
+      className={`flex flex-col gap-10 p-6 text-black dark:text-white container lg:w-2/5 md:w-2/4 sm:w-2/3 min-[452px]:w-3/4 font-${font}`}
     >
       <nav className="flex justify-between items-center">
         <img src={Logo} alt="Logo" className={`lg:w-24 ${invert} md:w-16 sm:w-16 w-16`} />
@@ -69,16 +60,13 @@ function App() {
           className="w-full bg-zinc-100 focus:text-black focus:font-semibold border-none rounded-full p-4 placeholder:text-black placeholder:font-semibold text-black font-semibold"
         />
       </form>
-      {load === false
-        ? <SkeletonComponent />
-        : (
-          <>
-            <MainContent word={data.word} phonetics={data.phonetics} meanings={data.meanings} />
-            <div className="w-full border-t-2 border-zinc-200 mb-5" />
-          </>
-        )}
+      {isRequestMade === true
+        ? load === true
+          ? <SkeletonComponent />
+          : (
+            <MainContent />
+          ) : ''}
     </div>
-
   );
 }
 

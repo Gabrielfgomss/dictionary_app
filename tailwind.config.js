@@ -10,7 +10,7 @@ export default {
     extend: {
       fontFamily: {
         lato: "'Lato', sans-serif",
-        merriWeather: "'Merriweather', serif",
+        merriweather: "'Merriweather', serif",
         noto: "'Noto Sans', sans-serif",
       },
       keyframes: {

@@ -29,6 +29,16 @@ function SkeletonComponent() {
             <div className="h-2 w-2/3 bg-gray-300 rounded" />
           </div>
         </div>
+        <div className="flex pt-10">
+          <div className="flex-1 space-y-6 py-1">
+            <div className="h-2 bg-gray-300 rounded" />
+            <div className="space-y-3">
+              <div className="h-2 bg-gray-300 rounded ml-10" />
+              <div className="h-2 bg-gray-300 rounded ml-10" />
+            </div>
+            <div className="h-2 w-2/3 bg-gray-300 rounded" />
+          </div>
+        </div>
 
       </div>
     </>
