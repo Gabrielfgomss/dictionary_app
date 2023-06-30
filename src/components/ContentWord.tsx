@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
-function ContentWord({ meanings, children }: { meanings: [{ definition: string }], children: ReactNode }) {
+function ContentWord({ meanings, children }:
+{ meanings: [{ definition: string }], children: ReactNode }) {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-zinc-400 font-light text-lg">Meaning</p>

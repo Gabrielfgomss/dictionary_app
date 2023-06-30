@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -13,7 +14,6 @@ const wordSlice = createSlice({
   initialState,
   reducers: {
     changeMeanings: (state, action) => {
-      console.log(typeof action.payload === 'string');
       if (typeof action.payload === 'string') {
         state.error = action.payload;
       } else {

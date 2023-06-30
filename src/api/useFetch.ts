@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { changeMeanings } from '../features/DataContext/wordSlice.ts';
 
 interface ResponseProps {
@@ -25,7 +25,6 @@ const useFetch = () => {
         };
         dispatch(changeMeanings(newData));
       } if (data.length === 1) {
-        console.log(data);
         const newData = {
           word: data[0].word,
           phonetics: data[0].phonetic,
@@ -34,7 +33,6 @@ const useFetch = () => {
         };
         dispatch(changeMeanings(newData));
       }
-      console.log('No data available');
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         dispatch(changeMeanings(error.response.data.message));

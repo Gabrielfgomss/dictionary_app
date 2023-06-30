@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { FormEvent, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Logo from './assets/dictionary.png';
