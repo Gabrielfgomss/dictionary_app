@@ -9,9 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        lato: "'Lato', sans-serif",
-        merriweather: "'Merriweather', serif",
-        noto: "'Noto Sans', sans-serif",
+        merriweather: ['"Merriweather"', 'serif'],
+        noto: ['"Noto Sans"', 'sans-serif'],
       },
       keyframes: {
         pulsing: {
@@ -30,5 +29,5 @@ export default {
   daisyui: {
     themes: [],
   },
-  plugins: [require('flowbite/plugin'), require('daisyui')],
+  plugins: [require('flowbite/plugin')],
 };

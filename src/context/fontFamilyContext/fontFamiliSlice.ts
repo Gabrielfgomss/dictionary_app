@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  font: 'lato'
+  font: 'serif'
 };
 
 const fontFamilySlice = createSlice({
@@ -10,6 +10,7 @@ const fontFamilySlice = createSlice({
   initialState,
   reducers: {
     changeFontFamily: (state, action) => {
+      console.log(action.payload);
       state.font = action.payload;
     },
   },

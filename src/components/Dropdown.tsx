@@ -89,7 +89,7 @@ function Dropdown() {
                   dispatch(changeFontFamily(target.textContent.toLowerCase()));
                 }
               }}
-              className="font-merriWeather block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="font-merriweather block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Merriweather
             </button>
@@ -104,7 +104,7 @@ function Dropdown() {
                   dispatch(changeFontFamily(target.textContent.toLowerCase()));
                 }
               }}
-              className="font-lato block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="font-noto block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Noto
             </button>
