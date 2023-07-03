@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFontFamily } from '../features/fontFamilyContext/fontFamiliSlice.ts';
+import { changeFontFamily } from '../context/fontFamilyContext/fontFamiliSlice.ts';
 import { RootState } from '../store.ts';
 
 function Dropdown() {

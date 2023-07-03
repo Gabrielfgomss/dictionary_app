@@ -5,7 +5,7 @@ import Logo from './assets/dictionary.png';
 import IconsNavBar from './components/IconsNavBar.tsx';
 import SkeletonComponent from './components/SkeletonComponent.tsx';
 import MainContent from './components/MainContent.tsx';
-import { changeInputState } from './features/inputTextContext/inputTextSlice.ts';
+import { changeInputState } from './context/inputTextContext/inputTextSlice.ts';
 import useFetch from './api/useFetch.ts';
 import { RootState } from './store.ts';
 

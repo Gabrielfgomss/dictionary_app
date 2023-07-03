@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import themeSlice from './features/themeContext/themeSlice.ts';
-import inputTextSlice from './features/inputTextContext/inputTextSlice.ts';
-import fontFamiliSlice from './features/fontFamilyContext/fontFamiliSlice.ts';
-import wordSlice from './features/DataContext/wordSlice.ts';
+import themeSlice from './context/themeContext/themeSlice.ts';
+import inputTextSlice from './context/inputTextContext/inputTextSlice.ts';
+import fontFamiliSlice from './context/fontFamilyContext/fontFamiliSlice.ts';
+import wordSlice from './context/DataContext/wordSlice.ts';
 
 const store = configureStore({
   reducer: {

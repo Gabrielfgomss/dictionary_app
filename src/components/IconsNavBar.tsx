@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import Dropdown from './Dropdown.tsx';
-import { ToggleButton } from './AnimateComponents.tsx';
-import { changeState } from '../features/themeContext/themeSlice.ts';
+import { ToggleButton } from './AnimateComponents';
+import { changeState } from '../context/themeContext/themeSlice';
 
 function IconsNavBar({ isChecked }: { isChecked: boolean }) {
   const dispatch = useDispatch();

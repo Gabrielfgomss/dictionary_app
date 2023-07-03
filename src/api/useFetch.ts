@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { changeMeanings } from '../features/DataContext/wordSlice.ts';
+import { changeMeanings } from '../context/DataContext/wordSlice.ts';
 
 interface ResponseProps {
   audio: string,
